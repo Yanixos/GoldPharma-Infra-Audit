@@ -1,0 +1,14 @@
+<html>
+<link href="buyamoxicillinonline.css" rel="stylesheet" type="text/css" />
+<?php
+if(testCookie() !== true)
+	die("<h1>Not connected</h1>");
+$tmp=$cookie['id'];
+$row = mysql_fetch_array(mysql_query("SELECT * FROM users where id = '$tmp'"));?>
+<h1>Client Overview :</h1>
+<h3>Status :</h3> <?php if($row["admin"] === "0"){echo "client";} else {echo "admin";}?><br />
+<h3>First name :</h3> <?php echo $row["firstname"];?><br />
+<h3>Last name :</h3> <?php echo $row["lastname"];?><br />
+<h3>e-mail :</h3> <?php echo $row["mail"];?><br />
+<h3>CCN :</h3> <?php echo "**** **** **** ".substr($row["ccn"],12,4);?><br />
+</html>
